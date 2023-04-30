@@ -27,7 +27,7 @@ function App() {
 		<div className='App'>
 			<Header />
 			<p>Favorite Movies & A Goat</p>
-			<GalleryList imageGallery={imageGallery} />
+			<GalleryList imageGallery={imageGallery} getImages ={getImages}/>
 		</div>
 	);
 }

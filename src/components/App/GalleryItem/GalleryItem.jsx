@@ -1,14 +1,27 @@
 import { useState } from 'react';
 import './GalleryItem.css';
+import axios from 'axios';
 
 function GalleryItem(props) {
 	const [isFlipped, setIsFlipped] = useState(false);
 
 	const [liked, setLiked] = useState(false);
 
+	const sendLikeToServer = () => {
+		axios
+			.put('/gallery/like/' + props.image.id)
+			.then((response) => {
+				setLiked(true);
+				props.getImages();
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
 	const onlikedImage = () => {
 		if (liked === false) {
-			setLiked(true);
+			sendLikeToServer();
 		}
 	};
 
@@ -23,7 +36,7 @@ function GalleryItem(props) {
 		} else {
 			return (
 				<>
-					<span>{props.image.likes + 1} </span>
+					<span>{props.image.likes} </span>
 					<button>Liked!</button>
 				</>
 			);
