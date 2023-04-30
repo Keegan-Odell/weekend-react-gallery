@@ -1,0 +1,14 @@
+.imageButton {
+	border: none;
+	width: 100px;
+	height: 120px;
+}
+
+.imageButton:focus {
+	border: none;
+	outline: none;
+}
+
+.imageButton:focus {
+	outline: none;
+}
