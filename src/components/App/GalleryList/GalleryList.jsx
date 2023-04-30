@@ -1,5 +1,6 @@
 import GalleryItem from '../GalleryItem/GalleryItem.jsx';
 import { useState } from 'react';
+import './GalleyList.css';
 
 function GalleryList(props) {
 	return (
