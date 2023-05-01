@@ -9,7 +9,7 @@ function GalleryItem(props) {
 
 	const sendLikeToServer = () => {
 		axios
-			.put('/gallery/like/' + props.image.id)
+			.put(`/gallery/like/${props.image.id}`)
 			.then((response) => {
 				setLiked(true);
 				props.getImages();
