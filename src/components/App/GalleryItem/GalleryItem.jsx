@@ -3,10 +3,14 @@ import './GalleryItem.css';
 import axios from 'axios';
 
 function GalleryItem(props) {
+	//the state we will use to store variables for conditional rendering
 	const [isFlipped, setIsFlipped] = useState(false);
 
 	const [liked, setLiked] = useState(false);
 
+	//this put request will send the update of likes to the server - using ID
+	//the server will then calculate the likes and change the likes
+	//then we update the DOM with props.getImages
 	const sendLikeToServer = () => {
 		axios
 			.put(`/gallery/like/${props.image.id}`)
@@ -19,12 +23,14 @@ function GalleryItem(props) {
 			});
 	};
 
+	//when like is clickend execute our put request
 	const onlikedImage = () => {
 		if (liked === false) {
 			sendLikeToServer();
 		}
 	};
 
+	//conditional rendering for flipping the like
 	const likeImage = () => {
 		if (liked === false) {
 			return (
@@ -43,6 +49,7 @@ function GalleryItem(props) {
 		}
 	};
 
+	//conditional rendering for flipping image
 	const flipImage = () => {
 		if (isFlipped === false) {
 			setIsFlipped(true);
@@ -51,6 +58,7 @@ function GalleryItem(props) {
 		}
 	};
 
+	//conditional rendering once again
 	const conditionallyRender = () => {
 		if (isFlipped === false) {
 			return (
@@ -66,6 +74,7 @@ function GalleryItem(props) {
 		}
 	};
 
+	//rendering the DOM
 	return (
 		<>
 			<div className='itemContainer'>
